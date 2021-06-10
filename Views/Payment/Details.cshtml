@@ -1,0 +1,154 @@
+﻿@model PaymenrOrderAPI.Models.PaymentOrder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PaymentOrder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RemitterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemitterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemitterAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemitterAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemitterPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemitterPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemitterIdType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemitterIdType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemitterIdNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemitterIdNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ccy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ccy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinancialInstituion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinancialInstituion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SourceOfFunds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SourceOfFunds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrincipalActivity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrincipalActivity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecepientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecepientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecepientPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecepientPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimaryAccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaryAccountNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SystemTraceAuditNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SystemTraceAuditNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reference)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reference)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OriginatorConversationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

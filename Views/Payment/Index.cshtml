@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PaymenrOrderAPI.Models.PaymentOrder>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Pay New", "Create")
+</p>
+<table class="table">
+    <tr>
+       <th>
+      Route Id
+    </th>
+    <th>
+      Remitter Name
+    </th>
+    <th>
+      Recepient Name
+    </th>
+
+    <th>
+     Primary Account Number
+    </th>
+    <th>
+      Currency
+    </th>  
+     <th>
+      Amount
+    </th>
+    <th>
+       System Trace Audit Number
+    </th>
+    <th>
+     Reference
+    </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.RouteId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RemitterName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RecepientName)
+    </td>
+
+    <td>
+        @Html.DisplayNameFor(model => model.PrimaryAccountNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ccy)
+    </td> 
+    <td>
+        @Html.DisplayFor(modelItem => item.Amount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SystemTraceAuditNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Reference)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.OriginatorConversationId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.OriginatorConversationId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.OriginatorConversationId })
+    </td>
+</tr>
+}
+
+</table>

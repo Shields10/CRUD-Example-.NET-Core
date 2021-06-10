@@ -1,0 +1,114 @@
+﻿@model PaymenrOrderAPI.Models.PaymentOrder
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Pay</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal ">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="card">
+        <h3 class="text-danger"> Remitter</h3>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.RemitterName)
+                @Html.EditorFor(model => model.RemitterName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RemitterName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.RemitterAddress)
+                @Html.EditorFor(model => model.RemitterAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RemitterAddress, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.RemitterPhoneNumber)
+                @Html.EditorFor(model => model.RemitterPhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RemitterPhoneNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.RemitterIdType)
+                @Html.EditorFor(model => model.RemitterIdType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RemitterIdType, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.RemitterIdNumber)
+                @Html.EditorFor(model => model.RemitterIdNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RemitterIdNumber, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Country)
+                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Ccy)
+                @Html.EditorFor(model => model.Ccy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ccy, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.SourceOfFunds)
+                @Html.EditorFor(model => model.SourceOfFunds, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SourceOfFunds, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.PrincipalActivity)
+                @Html.EditorFor(model => model.PrincipalActivity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PrincipalActivity, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+    </div>
+    <div class="card">
+        <h3 class="text-danger"> Recipient</h3>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label> Recepient Name</label>
+                @Html.EditorFor(model => model.RecepientName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RecepientName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-4">
+                <label> Recepient Phone Number</label>
+                @Html.EditorFor(model => model.RecepientPhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RecepientPhoneNumber, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Amount)
+                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-row text-center">
+        <div class="col-12">
+            <button type="submit" value="create" class="btn btn-primary btn-block "> Pay Now</button>
+        </div>
+    </div>
+
+</div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
