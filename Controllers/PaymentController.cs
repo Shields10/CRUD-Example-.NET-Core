@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PaymenrOrderAPI.Data;
 using PaymenrOrderAPI.Models;
+using System.Linq.Dynamic.Core;
 
 namespace PaymenrOrderAPI.Controllers
 {
@@ -18,7 +19,44 @@ namespace PaymenrOrderAPI.Controllers
         // GET: Payment
         public ActionResult Index()
         {
-            return View(db.PaymentOrders.ToList());
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GetData()
+        {
+            
+            //Server Side Parameter
+            int start = Convert.ToInt32(Request["start"]);
+            int length = Convert.ToInt32(Request["length"]);
+            string searchValue = Request["search[value]"];
+            string sortColumnName = Request["columns[" + Request["order[0][column]"] + "][name]"];
+            string sortDirection = Request["order[0][dir]"];
+
+            List<PaymentOrder> orderList = new List<PaymentOrder>();
+
+            orderList = db.PaymentOrders.ToList();
+
+            int totalrows = orderList.Count;
+            if (!string.IsNullOrEmpty(searchValue))//filter
+            { 
+     
+                orderList = orderList.
+                    Where(x => x.RouteId.ToString().Contains(searchValue.ToLower()) || x.RemitterName.ToLower().Contains(searchValue.ToLower()) || x.RecepientName.ToLower().Contains(searchValue.ToLower()) 
+                    || x.PrimaryAccountNumber.ToLower().Contains(searchValue.ToLower()) || x.Amount.ToString().Contains(searchValue.ToLower()) || x.Reference.ToLower().Contains(searchValue.ToLower()) || x.SystemTraceAuditNumber.ToString().Contains(searchValue.ToLower())).ToList<PaymentOrder>();
+            }
+
+            int totalrowsafterfiltering = orderList.Count;
+            //sorting
+            var queryable = orderList.AsQueryable();
+            orderList = queryable.OrderBy(sortColumnName + " " + sortDirection).ToList<PaymentOrder>();
+
+            //paging
+            orderList = orderList.Skip(start).Take(length).ToList<PaymentOrder>();
+
+
+            return Json(new { data = orderList, draw = Request["draw"], recordsTotal = totalrows, recordsFiltered = totalrowsafterfiltering }, JsonRequestBehavior.AllowGet);
+
         }
 
         // GET: Payment/Details/5
